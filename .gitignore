@@ -1,0 +1,13 @@
+build/
+out/
+.vs/
+.vscode/
+build-xcode/
+xcuserdata/
+*.xcuserstate
+DerivedData/
+*.dSYM/
+.DS_Store
+*.user
+*.exe
+CMakeUserPresets.json
