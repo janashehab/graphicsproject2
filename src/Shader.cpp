@@ -36,7 +36,7 @@ Shader::Shader(const char* vertexCode, const char* fragmentCode) {
     glDeleteShader(fragment);
 }
 
-//elhelper 
+//elhelper
 void Shader::checkCompileErrors(unsigned int shader, std::string type) {
     int success;
     char infoLog[1024];
