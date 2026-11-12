@@ -1,8 +1,8 @@
 #include "Model.h"
 
-// TODO (Member B): model loading and drawing belong in this file.
-// Consult the supplied DMET 502 materials on model loading.
-
+//read model file worganize all its meshes
+//mesh1 w mesh2 (geometry,indicies,textures)
+//draw meshes using VAOs,buffers w shaders
 Model::Model(const std::string&) {
 }
 
