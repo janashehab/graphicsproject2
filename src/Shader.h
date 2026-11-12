@@ -4,13 +4,9 @@
 
 #include <string>
 
-// TODO (Member B): compile and link the two GLSL source strings, then upload uniforms.
-// Labs 3, 4, and 5 pass embedded C++ strings. They do not read shader files.
-// Lab 5 shader.h is the interface to follow.
-// Write shaders as #version 330 core. The lab files say 430. The inspected lighting
-// and model shaders use no feature past GLSL 330 besides that version line.
-
 class Shader {
+    private:
+    void checkCompileErrors(unsigned int shader, std::string type);
 public:
     unsigned int ID = 0;
 
@@ -22,4 +18,5 @@ public:
     void setVec3(const std::string& name, const glm::vec3& value) const;
     void setVec3(const std::string& name, float x, float y, float z) const;
     void setMat4(const std::string& name, const glm::mat4& value) const;
+    
 };
