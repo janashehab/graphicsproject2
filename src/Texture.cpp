@@ -1,4 +1,4 @@
 #include "Texture.h"
 
-// TODO (Member B): texture loading belongs in this file.
-// Consult the supplied DMET 502 materials on texture loading.
+// TODO (Member B): texture loading belongs with model loading, as in the model lab.
+// This file does not call stbi_load or any OpenGL texture function.

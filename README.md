@@ -39,4 +39,4 @@ GLFW, GLAD, Assimp, stb_image, and audio libraries are not configured.
 
 `main` returns 0. Class methods are empty stubs.
 
-`Shader` takes two embedded GLSL source strings, matching Labs 3, 4, and 5. Those labs use `#version 430 core`, which requires OpenGL 4.3. macOS provides OpenGL 4.1 at most, so a 4.3 shader will not compile on macOS. This skeleton does not choose a GLSL version.
+`Shader` takes two embedded GLSL source strings, matching Lab 5. The project target is OpenGL 3.3 core and `#version 330 core`. The lab files request 4.3 and `#version 430 core`. The inspected lighting and model shaders need no GLSL feature past 330 besides that version line. E is reserved for interaction, not vertical camera movement.

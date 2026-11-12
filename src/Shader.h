@@ -7,7 +7,8 @@
 // TODO (Member B): compile and link the two GLSL source strings, then upload uniforms.
 // Labs 3, 4, and 5 pass embedded C++ strings. They do not read shader files.
 // Lab 5 shader.h is the interface to follow.
-// The GLSL version will be decided during shader implementation, considering macOS compatibility.
+// Write shaders as #version 330 core. The lab files say 430. The inspected lighting
+// and model shaders use no feature past GLSL 330 besides that version line.
 
 class Shader {
 public:

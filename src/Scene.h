@@ -9,7 +9,9 @@
 
 // Shared scene contract.
 // Member C implements Scene1. Member D implements Scene2.
-// Stored interactable pointers are not allocated or deleted here.
+// The scene that inserts an Interactable* owns that object and deletes it in
+// its own destructor. ~Scene() does not delete interactables. Nothing in this
+// skeleton allocates or deletes them.
 
 struct Bounds {
     float minX;

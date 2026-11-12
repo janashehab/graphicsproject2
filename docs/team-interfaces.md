@@ -2,7 +2,7 @@
 
 These are the approved contracts. Method signatures stay as written here.
 
-`Scene` stores `std::vector<Interactable*>`. This skeleton does not allocate or delete those objects. The team plan does not say who owns them.
+`Scene` stores `std::vector<Interactable*>`. The scene that inserts a pointer owns that object and deletes it in its destructor. `~Scene()` does not delete them. This skeleton allocates and deletes none.
 
 `Scene::~Scene` is virtual so a derived scene can be destroyed through a `Scene*`.
 
@@ -10,7 +10,11 @@ GLM types come from GLM 1.0.1. Fetching GLM with CMake FetchContent is **EXTERNA
 
 `Shader` follows Lab 5 `shader.h`. The constructor receives two GLSL source strings embedded in C++, matching Labs 3, 4, and 5. It does not read `.vert` or `.frag` files. The method bodies in this skeleton are empty.
 
-Labs 3, 4, and 5 use `#version 430 core`, which requires OpenGL 4.3. macOS provides OpenGL 4.1 at most, so a 4.3 shader will not compile on macOS. This skeleton does not select a GLSL version. That choice belongs to shader implementation.
+The common target is OpenGL 3.3 core and `#version 330 core`. Labs 3, 4, and 5 request OpenGL 4.3 and `#version 430 core`. The inspected Lab 5 lighting shaders and the model-lab shaders use `layout(location)` on vertex inputs, structs, samplers, and `texture()`. Those are valid in GLSL 330. They do not use explicit uniform locations, storage blocks, or compute shaders. Only the version line has to change when those shaders are brought into this project.
+
+`LightSetup` fields stay as written. `applyLights` is empty. The Lab 5 names are `dirLight.direction`, `pointLights[0].position`, `spotLight.position`, and `spotLight.direction`. `spotCutoff` and `spotOuter` are degrees. The lab shader stores cosines, and `5_3_light_casters_spot.cpp` converts degrees with `cos(radians(...))` before upload. How `dirColor`, `pointColor`, and `spotColor` split into the lab's separate ambient, diffuse, and specular colors is unresolved. Do not invent intensity multipliers or attenuation values for that split.
+
+E is reserved for interaction. The Lab 5 camera has no vertical movement. Lab 4's use of E to move up is not part of this interface. `Camera::Front`, `Right`, and `Up` are not initialized for movement until `updateCameraVectors` is implemented.
 
 ```cpp
 struct Bounds {
