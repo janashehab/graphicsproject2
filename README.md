@@ -29,7 +29,7 @@ GLFW, GLAD, Assimp, stb_image, and audio libraries are not configured.
 | Member | Files |
 | --- | --- |
 | A — core, player, camera | `src/main.cpp`, `Camera`, `Player`, `Input`, `HUD`, `assets/player/` |
-| B — rendering and lighting | `Shader`, `Model`, `Texture`, `Lights`, `Ground`, `shaders/` |
+| B — rendering and lighting | `Shader`, `Model`, `Texture`, `Lights`, `Ground` |
 | C — scene 1 | `Scene1`, `scene1/`, `assets/scene1/` |
 | D — scene 2 and audio | `Scene2`, `Audio`, `scene2/`, `assets/scene2/`, `assets/sounds/` |
 
@@ -37,4 +37,6 @@ GLFW, GLAD, Assimp, stb_image, and audio libraries are not configured.
 
 ## Current behavior
 
-`main` returns 0. Class methods are empty stubs. Shader files are comments and are not compiled by CMake.
+`main` returns 0. Class methods are empty stubs.
+
+`Shader` takes two embedded GLSL source strings, matching Lab 5. The project target is OpenGL 3.3 core and `#version 330 core`. The lab files request 4.3 and `#version 430 core`. The inspected lighting and model shaders need no GLSL feature past 330 besides that version line. E is reserved for interaction, not vertical camera movement.
