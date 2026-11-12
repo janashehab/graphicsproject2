@@ -4,15 +4,21 @@
 
 #include <string>
 
-// TODO (Member B): shader program and uniform uploads.
-// Consult the supplied DMET 502 materials on shader programs and uniforms.
+// TODO (Member B): compile and link the two GLSL source strings, then upload uniforms.
+// Labs 3, 4, and 5 pass embedded C++ strings. They do not read shader files.
+// Lab 5 shader.h is the interface to follow.
+// The GLSL version will be decided during shader implementation, considering macOS compatibility.
 
 class Shader {
 public:
-    Shader(const std::string& vertexPath, const std::string& fragmentPath);
-    void use();
-    void setMat4(const std::string& name, const glm::mat4& value);
-    void setVec3(const std::string& name, const glm::vec3& value);
-    void setFloat(const std::string& name, float value);
-    void setInt(const std::string& name, int value);
+    unsigned int ID = 0;
+
+    Shader(const char* vertexCode, const char* fragmentCode);
+    void use() const;
+    void setBool(const std::string& name, bool value) const;
+    void setInt(const std::string& name, int value) const;
+    void setFloat(const std::string& name, float value) const;
+    void setVec3(const std::string& name, const glm::vec3& value) const;
+    void setVec3(const std::string& name, float x, float y, float z) const;
+    void setMat4(const std::string& name, const glm::mat4& value) const;
 };

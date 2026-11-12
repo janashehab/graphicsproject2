@@ -29,7 +29,7 @@ GLFW, GLAD, Assimp, stb_image, and audio libraries are not configured.
 | Member | Files |
 | --- | --- |
 | A — core, player, camera | `src/main.cpp`, `Camera`, `Player`, `Input`, `HUD`, `assets/player/` |
-| B — rendering and lighting | `Shader`, `Model`, `Texture`, `Lights`, `Ground`, `shaders/` |
+| B — rendering and lighting | `Shader`, `Model`, `Texture`, `Lights`, `Ground` |
 | C — scene 1 | `Scene1`, `scene1/`, `assets/scene1/` |
 | D — scene 2 and audio | `Scene2`, `Audio`, `scene2/`, `assets/scene2/`, `assets/sounds/` |
 
@@ -37,4 +37,6 @@ GLFW, GLAD, Assimp, stb_image, and audio libraries are not configured.
 
 ## Current behavior
 
-`main` returns 0. Class methods are empty stubs. Shader files are comments and are not compiled by CMake.
+`main` returns 0. Class methods are empty stubs.
+
+`Shader` takes two embedded GLSL source strings, matching Labs 3, 4, and 5. Those labs use `#version 430 core`, which requires OpenGL 4.3. macOS provides OpenGL 4.1 at most, so a 4.3 shader will not compile on macOS. This skeleton does not choose a GLSL version.

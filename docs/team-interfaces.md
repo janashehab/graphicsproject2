@@ -8,6 +8,10 @@ These are the approved contracts. Method signatures stay as written here.
 
 GLM types come from GLM 1.0.1. Fetching GLM with CMake FetchContent is **EXTERNAL — NOT VERIFIED IN LABS**. See `README.md`.
 
+`Shader` follows Lab 5 `shader.h`. The constructor receives two GLSL source strings embedded in C++, matching Labs 3, 4, and 5. It does not read `.vert` or `.frag` files. The method bodies in this skeleton are empty.
+
+Labs 3, 4, and 5 use `#version 430 core`, which requires OpenGL 4.3. macOS provides OpenGL 4.1 at most, so a 4.3 shader will not compile on macOS. This skeleton does not select a GLSL version. That choice belongs to shader implementation.
+
 ```cpp
 struct Bounds {
     float minX;
@@ -32,12 +36,16 @@ void applyLights(Shader& shader, const LightSetup& lights, float time, bool horr
 
 class Shader {
 public:
-    Shader(const std::string& vertexPath, const std::string& fragmentPath);
-    void use();
-    void setMat4(const std::string& name, const glm::mat4& value);
-    void setVec3(const std::string& name, const glm::vec3& value);
-    void setFloat(const std::string& name, float value);
-    void setInt(const std::string& name, int value);
+    unsigned int ID = 0;
+
+    Shader(const char* vertexCode, const char* fragmentCode);
+    void use() const;
+    void setBool(const std::string& name, bool value) const;
+    void setInt(const std::string& name, int value) const;
+    void setFloat(const std::string& name, float value) const;
+    void setVec3(const std::string& name, const glm::vec3& value) const;
+    void setVec3(const std::string& name, float x, float y, float z) const;
+    void setMat4(const std::string& name, const glm::mat4& value) const;
 };
 
 class Model {
