@@ -4,8 +4,11 @@
 
 #include <glm/glm.hpp>
 
-// TODO (Member B): directional, point, and spot lights, plus horror lighting.
-// Consult Lab 5. applyLights is still empty.
+extern const char* lightingVS;
+extern const char* lightingFS;
+
+// TODO (Member B): horror lighting is still pending.
+// Consult Lab 5.
 //
 // Lab 5 uniform names, from 6_multiple_lights.cpp and 5_3_light_casters_spot.cpp:
 //   dirDir    -> dirLight.direction
@@ -13,13 +16,18 @@
 //   spotPos   -> spotLight.position
 //   spotDir   -> spotLight.direction
 // spotCutoff and spotOuter are degrees. The lab shader stores cosines.
-// applyLights must upload cos(radians(degrees)) to spotLight.cutOff and
+// applyLights uploads cos(radians(degrees)) to spotLight.cutOff and
 // spotLight.outerCutOff. 5_3_light_casters_spot.cpp converts 12.5 and 17.5
 // degrees that way.
 //
-// UNRESOLVED: dirColor, pointColor, and spotColor are each one vec3.
+// dirColor, pointColor, and spotColor are each one vec3.
 // Lab 5 stores ambient, diffuse, and specular separately for every light.
-// Do not invent intensity multipliers or attenuation values for that split.
+// applyLights scales each base color by the original 6_multiple_lights.cpp
+// coefficient vectors:
+//   directional: ambient 0.05, diffuse 0.4, specular 0.5
+//   point:       ambient 0.05, diffuse 0.8, specular 1.0
+//   spot:        ambient 0.0,  diffuse 1.0, specular 1.0
+// Attenuation remains the lab constants 1.0, 0.09, and 0.032.
 
 struct LightSetup {
     glm::vec3 dirDir;
